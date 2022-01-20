@@ -10,7 +10,7 @@ public class MonApplication {
 
         ApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
         ClientController ctrl = (ClientController) context.getBean("controller");
-        Client client = new Client(1,"MOUFTAH");
+        Client client = new Client("MOUFTAH");
         ctrl.save(client);
     }
 }
