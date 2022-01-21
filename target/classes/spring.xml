@@ -14,6 +14,22 @@
 
     </bean>
 
+    <!-- -->
+    <!-- beans Factures -->
+
+    <bean id="fcontroller" class="cigma.pfe.controllers.FactureController"
+          scope="prototype">
+        <constructor-arg ref="fservice"/>
+    </bean>
+
+    <bean id="fservice" class="cigma.pfe.services.FactureServiceImpl" scope="prototype">
+        <constructor-arg ref="repository"/>
+    </bean>
+
+    <bean id="frepository" class="cigma.pfe.repositories.FactureRepositoryImpl" scope="prototype">
+
+    </bean>
+
 </beans>
 
 
