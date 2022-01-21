@@ -24,7 +24,7 @@ public class FactureRepositoryImpl implements FactureRepository{
     }
 
     public List<Facture> read() {
-        List<Facture> ReadF = em.createQuery("select e from TFactures e").getResultList();
+        List<Facture> ReadF = em.createQuery("select e from Facture e").getResultList();
         return ReadF;
     }
 
@@ -39,7 +39,6 @@ public class FactureRepositoryImpl implements FactureRepository{
     public Facture update(Facture f) {
         em.getTransaction().begin();
         Facture currentFacture = em.find(Facture.class,f.getId());
-        currentFacture.setDate(f.getDate());
         currentFacture.setAmount(f.getAmount());
         em.persist(currentFacture);
         em.getTransaction().commit();

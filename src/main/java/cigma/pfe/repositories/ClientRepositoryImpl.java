@@ -45,7 +45,7 @@ public class ClientRepositoryImpl implements  ClientRepository {
     }
 
     public List<Client> findAll() {
-        List<Client> ListClient = em.createQuery("select e from TClients e").getResultList();
+        List<Client> ListClient = em.createQuery("select e from Client e").getResultList();
         return ListClient;
     }
 

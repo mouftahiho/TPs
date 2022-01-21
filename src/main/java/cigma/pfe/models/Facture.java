@@ -1,51 +1,43 @@
 package cigma.pfe.models;
 
 
-import javax.persistence.*;
-import java.util.Date;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
-@Entity(name = "TFactures")
-    public class Facture {
+import javax.persistence.*;
+
+@Entity
+@Getter
+@Setter
+@ToString
+public class Facture {
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY )
         private  long id;
-        @Column
-        private Date date;
-        @Column
         private double amount;
+        private String description;
 
-        public Facture(){}
 
-        public Facture(Date date, double amount) {
-            this.date = date;
-            this.amount = amount;
-        }
+    @ManyToOne
+    @JoinColumn(name = "client_id")
+    private Client client;
 
-    @Override
-    public String toString() {
-        return "Facture{" +
-                "id=" + id +
-                ", date=" + date +
-                ", amount=" + amount +
-                '}';
+
+
+    public Facture(long id, double amount, String description, Client client) {
+        this.id = id;
+        this.amount = amount;
+        this.description = description;
+        this.client = client;
     }
 
-    public Date getDate() {
-        return date;
-    }
 
-    public void setDate(Date date) {
-        this.date = date;
-    }
+
 
     public double getAmount() {
         return amount;
     }
-
-    public void setAmount(double amount) {
-        this.amount = amount;
-    }
-
     public long getId() {
         return id;
     }
@@ -53,4 +45,22 @@ import java.util.Date;
     public void setId(long id) {
         this.id = id;
     }
+
+    public void setAmount(double amount) {
+        this.amount = amount;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    /*
+    @ManyToOne
+    @JoinColumn(name = "produit_id")
+    private Produit produit;
+    */
 }
