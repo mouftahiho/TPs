@@ -1,11 +1,12 @@
 package cigma.pfe;
 
 import cigma.pfe.controllers.ClientController;
-import cigma.pfe.controllers.FactureController;
-import cigma.pfe.models.CarteFidelio;
+
 import cigma.pfe.models.Client;
-import cigma.pfe.models.Facture;
-import cigma.pfe.models.Promotion;
+
+
+import cigma.pfe.models.ClientNormal;
+import cigma.pfe.models.ClientVip;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -17,18 +18,15 @@ public class MonApplication {
     public static void main(String[] args) {
 
         ApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
-        ClientController ctrl = (ClientController) context.getBean("controller");
+        ClientController ctrl = (ClientController) context.getBean("ctrl");
 
-         Client client = new Client("MOUFTAH");
-        //List<Promotion> promotions=Arrays.asList(new Promotion("remise 10%"),new Promotion("solde 40%"));
+        ctrl.save(new Client("MOUFTAH"));
+        ctrl.save(new ClientVip("MOUFTAH","test"));
+        ctrl.save(new ClientNormal("MOUFTAH",2));
 
-        CarteFidelio carteFidelio = new CarteFidelio("A29930489");
-        carteFidelio.setClient(client);
-        client.setCarteFidelio(carteFidelio);
 
-        //client.setPromotions(promotions);
 
-         ctrl.save(client);
+         //ctrl.save(client);
 /*
         // Test save use case for three clients
         ctrl.save(new Client("ABDESSADEK"));

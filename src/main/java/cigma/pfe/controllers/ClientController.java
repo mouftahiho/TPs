@@ -3,17 +3,19 @@ package cigma.pfe.controllers;
 import cigma.pfe.models.Client;
 import cigma.pfe.services.ClientService;
 import cigma.pfe.services.ClientServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 
 import java.util.List;
 
+@Controller("ctrl")
 public class ClientController {
 
 
-    ClientService clientService;
+    @Autowired
+    private ClientService clientService;
 
-    public void setClientService(ClientService clientService) {
-        this.clientService = clientService;
-    }
+
 
     public ClientController(ClientService clientService) {
         System.out.println("Call ClientController with clientService param....");

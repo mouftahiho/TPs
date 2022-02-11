@@ -1,43 +1,43 @@
 package cigma.pfe.repositories;
 
 import cigma.pfe.models.Client;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.PersistenceContext;
 import java.util.List;
 
+@Repository
 public class ClientRepositoryImpl implements  ClientRepository {
 
 
 
-    EntityManagerFactory emf= Persistence.createEntityManagerFactory("unit_clients");
-    EntityManager em=emf.createEntityManager();
+    @PersistenceContext
+    private EntityManager em;
 
+    @Transactional
     public Client save(Client c) {
-        System.out.println("DAO Layer : ClientRepositoryImpl Level");
-        em.getTransaction().begin();
-        em.persist(c);
-        em.getTransaction().commit();
-
+       em.persist(c);
         return null;
 
     }
-
+    @Transactional
     public Client update(Client c) {
-        em.getTransaction().begin();
+
         Client currentClient = em.find(Client.class,c.getId());
         currentClient.setName(c.getName());
         em.persist(currentClient);
-        em.getTransaction().commit();
+
         return null ;
     }
-
+    @Transactional
     public void deleteById(long idClient) {
-        em.getTransaction().begin();
         Client clientInDataBase = em.find(Client.class,idClient);
         em.remove(clientInDataBase);
-        em.getTransaction().commit();
+
     }
 
     public Client findById(long idClient) {

@@ -3,12 +3,18 @@ package cigma.pfe.services;
 import cigma.pfe.models.Client;
 import cigma.pfe.repositories.ClientRepository;
 import cigma.pfe.repositories.ClientRepositoryImpl;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+@Service
+@Transactional
 public class ClientServiceImpl implements ClientService{
 
-    ClientRepository clientRepository ;
+    @Autowired
+    private ClientRepository clientRepository ;
 
     public ClientServiceImpl(ClientRepository clientRepository) {
         System.out.println("call setter par Service IMPL par Constructor");
