@@ -21,9 +21,9 @@ public class MonApplication {
         ClientController ctrl = (ClientController) context.getBean("ctrl");
 
         ctrl.save(new Client("MOUFTAH"));
-        ctrl.save(new ClientVip("MOUFTAH","test"));
-        ctrl.save(new ClientNormal("MOUFTAH",2));
-
+        ctrl.save(new ClientVip("MOUFTAH1","test"));
+        ctrl.save(new ClientNormal("MOUFTAH2",2));
+        ctrl.removeById(1L);
 
 
          //ctrl.save(client);

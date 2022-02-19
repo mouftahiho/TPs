@@ -8,15 +8,15 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.util.List;
 
-@Entity(name = "Tclients")
+@Entity
 @Data
 
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@Inheritance(strategy = InheritanceType.JOINED)
 //@DiscriminatorColumn(name="client_type")
 //@DiscriminatorValue("client")
 public class Client {
     @Id
-    @GeneratedValue(strategy = GenerationType.TABLE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public long id;
 
     @Column
