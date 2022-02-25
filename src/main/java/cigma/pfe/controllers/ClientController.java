@@ -17,19 +17,13 @@ public class ClientController {
 
 
 
-    public ClientController(ClientService clientService) {
-        System.out.println("Call ClientController with clientService param....");
-        this.clientService = clientService;
-    }
+
 
     public Client save(Client c ){
         System.out.println("ClientController level...");
         return clientService.save(c);
     }
 
-    public ClientController() {
-        System.out.println("Call ClientController ....");
-    }
 
     public void modify(Client c){
         clientService.modify(c);
@@ -44,4 +38,14 @@ public class ClientController {
     public List<Client> getAll(){
      return clientService.getAll();
     }
+
+
+    public void remove(long id) {
+        clientService.removeById(id);
+    }
+
+    public List<Client> Find(String name){
+        return clientService.FindbyName(name);
+    }
+
 }

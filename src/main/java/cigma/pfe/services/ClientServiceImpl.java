@@ -2,7 +2,6 @@ package cigma.pfe.services;
 
 import cigma.pfe.models.Client;
 import cigma.pfe.repositories.ClientRepository;
-import cigma.pfe.repositories.ClientRepositoryImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -10,7 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
-@Transactional
+
 public class ClientServiceImpl implements ClientService{
 
     @Autowired
@@ -22,32 +21,41 @@ public class ClientServiceImpl implements ClientService{
     }
 
 
-
+    @Transactional
     public Client save(Client c) {
-        System.out.println("Service Layer : ClientServiceImpl Level... ");
         return clientRepository.save(c);
     }
 
+    @Transactional
     public Client modify(Client c) {
-        return clientRepository.update(c);
+        Client cl =clientRepository.findById(c.getId()).get();
+        cl.setName(c.getName());
+        return clientRepository.save(cl);
     }
 
+    @Transactional
     public void removeById(long id) {
         clientRepository.deleteById(id);
+
     }
 
     public Client getById(long id) {
-        return clientRepository.findById(id);
+        return clientRepository.findById(id).get();
     }
 
     public List<Client> getAll() {
-        return clientRepository.findAll();
+        return (List<Client>) clientRepository.findAll();
     }
 
+    @Override
+    public List<Client> FindbyName(String name) {
+        return  clientRepository.findByName(name);
+    }
 
     public ClientServiceImpl() {
         System.out.println("Call ClientServiceImpl ....");
     }
+
 
 
 }

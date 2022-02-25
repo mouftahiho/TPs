@@ -8,12 +8,13 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.util.List;
 
-@Entity
-@Data
+@Entity(name = "Tclients")
+
+
+@AllArgsConstructor
 
 @Inheritance(strategy = InheritanceType.JOINED)
-//@DiscriminatorColumn(name="client_type")
-//@DiscriminatorValue("client")
+
 public class Client {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,6 +31,7 @@ public class Client {
     public Client() {
     }
 
+
     public long getId() {
         return id;
     }
@@ -44,5 +46,8 @@ public class Client {
 
     public void setName(String name) {
         this.name = name;
-    }
+      }
+
+
+
 }
