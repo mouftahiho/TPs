@@ -12,29 +12,29 @@ import java.util.List;
 public class FactureController {
 
     @Autowired
-    FactureService service;
+    FactureService factureService;
 
-    public Facture save(Facture f){
-        return  service.save(f);
-    }
-
-    public Facture modify(Facture f){
-        return service.modify(f);
+    public Facture saveFacture(Facture f){
+        return factureService.saveFacture(f);
     }
 
-    public List<Facture> getAll(){
-        return service.getAll();
+    public void modifierFacture(Facture f){
+        factureService.saveFacture(f);
     }
-    public Facture getOne(long id){
-        return service.getOne(id);
-    }
-
-    public void remove(long id){
-        service.remove(id);
+    public void deleteFacture(long id){
+        factureService.removeFacture(id);
     }
 
-    public List<Facture> FindbyDate(Date date){
-        return service.FindbyDate(date);
+    public Facture getFacturebyId(long id){
+        return factureService.getByIdFacture(id);
     }
+
+    public List<Facture> getAllFactures(Date date){
+        return factureService.getAllFactureByDate(date);
+    }
+    public List<Facture> findAllFactures(){
+        return factureService.findAllFactures();
+    }
+
 
 }

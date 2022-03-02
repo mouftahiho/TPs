@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
-
+@Transactional
 public class ClientServiceImpl implements ClientService{
 
     @Autowired
@@ -21,22 +21,22 @@ public class ClientServiceImpl implements ClientService{
     }
 
 
+
     @Transactional
     public Client save(Client c) {
+        System.out.println("Service Layer : ClientServiceImpl Level... ");
         return clientRepository.save(c);
     }
 
     @Transactional
-    public Client modify(Client c) {
-        Client cl =clientRepository.findById(c.getId()).get();
-        cl.setName(c.getName());
-        return clientRepository.save(cl);
+    public Client modify(Client cnew) {
+        Client cold = clientRepository.findById(cnew.getId()).get();
+        cold.setName(cnew.getName());
+        return clientRepository.save(cold);
     }
-
     @Transactional
     public void removeById(long id) {
         clientRepository.deleteById(id);
-
     }
 
     public Client getById(long id) {
@@ -49,13 +49,13 @@ public class ClientServiceImpl implements ClientService{
 
     @Override
     public List<Client> FindbyName(String name) {
-        return  clientRepository.findByName(name);
+        return clientRepository.findByName(name);
     }
+
 
     public ClientServiceImpl() {
         System.out.println("Call ClientServiceImpl ....");
     }
-
 
 
 }
