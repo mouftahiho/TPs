@@ -23,5 +23,6 @@ public class MockClients implements CommandLineRunner {
         clientRepository.save(c3);
         clientRepository.save(c4);
         clientRepository.findAll().forEach(c -> System.out.println (c));
+
     }
 }
