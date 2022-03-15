@@ -13,7 +13,6 @@ public class MonApplication {
         SpringApplication.run(MonApplication.class, args);
 
 
-
     }
 
 }
