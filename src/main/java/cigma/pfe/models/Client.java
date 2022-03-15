@@ -7,7 +7,8 @@ import javax.persistence.*;
 
 @Data
 @AllArgsConstructor
-@Entity(name = "Tclients")
+@Entity
+
 public class Client {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

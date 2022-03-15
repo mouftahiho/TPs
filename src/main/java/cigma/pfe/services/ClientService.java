@@ -10,7 +10,7 @@ public interface ClientService {
     void removeById(long id);
     Client getById(long id);
     List<Client> getAll();
-    public List<Client> FindbyName(String name);
+    List<Client> FindbyName(String name);
 
 }
 
