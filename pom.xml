@@ -14,9 +14,9 @@
 	<artifactId>FRONT-END</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>FRONT END  APP</name>
-	<description>THIS IS TP13 </description>
+	<description>TP13 </description>
 	<properties>
-		<java.version>17</java.version>
+		<java.version>8</java.version>
 	</properties>
 	<dependencies>
 
